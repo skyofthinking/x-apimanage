@@ -19,15 +19,18 @@ const Err404 = _import('404');
 const Form = _import('page/form');
 const Table = _import('table/index');
 
+/* api manage */
+const User = _import('sys/user');
+
 Vue.use(Router);
 
- /**
-  * icon : the icon show in the sidebar
-  * hidden : if `hidden:true` will not show in the sidebar
-  * redirect : if `redirect:noredirect` will not redirct in the levelbar
-  * noDropdown : if `noDropdown:true` will not has submenu in the sidebar
-  * meta : `{ role: ['admin'] }`  will control the page role
-  **/
+/**
+ * icon : the icon show in the sidebar
+ * hidden : if `hidden:true` will not show in the sidebar
+ * redirect : if `redirect:noredirect` will not redirct in the levelbar
+ * noDropdown : if `noDropdown:true` will not has submenu in the sidebar
+ * meta : `{ role: ['admin'] }`  will control the page role
+ **/
 export const constantRouterMap = [
   { path: '/login', component: Login, hidden: true },
   { path: '/404', component: Err404, hidden: true },
@@ -67,6 +70,17 @@ export const asyncRouterMap = [
     icon: 'tubiaoleixingzhengchang',
     noDropdown: true,
     children: [{ path: 'index', component: Table, name: 'Table', meta: { role: ['admin'] } }]
+  },
+
+  {
+    path: '/sys',
+    component: Layout,
+    redirect: 'noredirect',
+    name: '系统管理',
+    icon: 'zujian',
+    children: [
+      { path: 'user', component: User, name: '用户管理', meta: { role: ['admin'] } }
+    ]
   },
 
   { path: '*', redirect: '/404', hidden: true }
