@@ -21,6 +21,7 @@ const Table = _import('table/index');
 
 /* api manage */
 const User = _import('sys/user');
+const UserEx = _import('sys/userex');
 
 Vue.use(Router);
 
@@ -79,7 +80,8 @@ export const asyncRouterMap = [
     name: '系统管理',
     icon: 'zujian',
     children: [
-      { path: 'user', component: User, name: '用户管理', meta: { role: ['admin'] } }
+      { path: 'user', component: User, name: '用户管理', meta: { role: ['admin'] } },
+      { path: 'userex', component: UserEx, name: '示例', meta: { role: ['admin'] } }
     ]
   },
 

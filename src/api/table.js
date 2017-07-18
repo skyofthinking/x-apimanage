@@ -7,5 +7,3 @@ export function getList(params) {
     params
   });
 }
-
-
